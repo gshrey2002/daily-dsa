@@ -21,14 +21,13 @@ class PrimMST {
     public static int primMST(int[][] graph) {
         int n = graph.length;
         boolean[] inMST = new boolean[n];
-        int[] key = new int[n]; // To store minimum weight edge
+        int[] key = new int[n]; 
         Arrays.fill(key, Integer.MAX_VALUE);
-        key[0] = 0; // Start with the first node
+        key[0] = 0; 
         int totalCost = 0;
 
         PriorityQueue<Edge> pq = new PriorityQueue<>();
-        pq.add(new Edge(0, 0)); // Start from the first node
-
+        pq.add(new Edge(0, 0)); 
         while (!pq.isEmpty()) {
             Edge curr = pq.poll();
             int u = curr.node;
@@ -37,7 +36,6 @@ class PrimMST {
             inMST[u] = true;
             totalCost += curr.weight;
 
-            // Check all adjacent vertices
             for (int v = 0; v < n; v++) {
                 if (graph[u][v] != 0 && !inMST[v] && graph[u][v] < key[v]) {
                     key[v] = graph[u][v];
@@ -50,7 +48,7 @@ class PrimMST {
     }
 
     public static void main(String[] args) {
-        // Example graph from the problem statement
+        
         int[][] graph = {
                 {0, 4, 0, 0, 0, 0, 0, 8, 0, 0},
                 {4, 0, 8, 0, 0, 0, 0, 11, 0, 0},
